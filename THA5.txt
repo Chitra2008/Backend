@@ -1,0 +1,21 @@
+var fs = require("fs");                 //accessing/requiring the file system       
+
+fs.mkdirSync("demo");                   //creating the folder --> demo
+fs.writeFileSync("demo/hello.txt","Hello from demo",(err) => {           //creating the file --> hello
+    if(err){
+        console.log(err);
+    }
+});
+
+var data = fs.readFileSync("demo/hello.txt","utf-8");                    //reading the file hello.txt and fetching it in data
+console.log(data);                                                       //printing data
+
+fs.appendFileSync("demo/hello.txt",",this is the appended text");           //appending some text in hello.txt file
+data = fs.readFileSync("demo/hello.txt","utf-8");
+console.log(data);
+
+fs.renameSync("demo/hello.txt","demo/hello2.txt");                          //renamed the file
+
+fs.unlinkSync("demo/hello2.txt");                                           //file deleted
+
+fs.rmdirSync('demo');                                                       //folder/schema deleted
